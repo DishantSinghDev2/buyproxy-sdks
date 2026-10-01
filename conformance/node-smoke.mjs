@@ -1,0 +1,36 @@
+import { BuyProxy, AuthenticationError, RateLimitError, InsufficientBandwidthError } from "../buyproxy-node/dist/index.js";
+const baseUrl = "http://127.0.0.1:" + (process.env.PORT || 4010);
+const personal = new BuyProxy({ apiKey: "bp_key_test", baseUrl });
+const reseller = new BuyProxy({ apiKey: "bp_live_test", baseUrl });
+
+await personal.products.list();
+await personal.account.get();
+await personal.balances.list();
+await personal.plans.list();
+const g = await personal.plans.generate("plan_1", { protocol: "socks5", count: 2, country: "US", city: "Austin", stickyMinutes: 10 });
+if (g.proxies.length !== 2 || g.proxies[0].protocol !== "socks5") throw new Error("generate parse");
+await personal.topup.card({ kind: "topup", productKey: "residential", gb: 10 });
+await personal.topup.card({ kind: "plan", plan: "pro", interval: "year" });
+await personal.topup.crypto({ productKey: "residential", gb: 5 });
+await personal.transactions.list({ limit: 5 });
+await personal.transactions.get("st_abc");
+await reseller.reseller.me();
+await reseller.reseller.customers.list({ status: "active" });
+await reseller.reseller.customers.create({ label: "Acme" });
+await reseller.reseller.customers.get("bp_acme_1");
+await reseller.reseller.customers.update("bp_acme_1", { status: "suspended" });
+await reseller.reseller.customers.usage("bp_acme_1");
+await reseller.reseller.customers.allocate("bp_acme_1", { productKey: "premium", gb: 10, idempotencyKey: "order-1" });
+await reseller.reseller.customers.generate("bp_acme_1", { planId: "plan_1", country: "DE" });
+await reseller.reseller.pool.get();
+await reseller.reseller.pool.topupCard({ productKey: "residential", gb: 100 });
+await reseller.reseller.pool.topupCrypto({ productKey: "residential", gb: 100 });
+const anon = new BuyProxy({ baseUrl, apiKey: "" });
+await anon.auth.signup({ email: "a@b.co", password: "hunter22", name: "A" });
+await anon.auth.verifyOtp({ email: "a@b.co", code: "482913" });
+await anon.auth.resendOtp({ email: "a@b.co" });
+const expectErr = async (fn, type) => { try { await fn(); } catch (e) { if (e instanceof type) return; throw e; } throw new Error("expected " + type.name); };
+await expectErr(() => new BuyProxy({ apiKey: "bad", baseUrl }).account.get(), AuthenticationError);
+await new BuyProxy({ apiKey: "ratelimit-once", baseUrl }).account.get();   // two requests: 429 then 200
+await expectErr(() => new BuyProxy({ apiKey: "broke", baseUrl }).reseller.customers.allocate("bp_acme_1", { productKey: "premium", gb: 999 }), InsufficientBandwidthError);
+console.log("node smoke OK");

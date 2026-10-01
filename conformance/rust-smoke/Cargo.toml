@@ -1,0 +1,8 @@
+[package]
+name = "smoke"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+buyproxy = { path = "../../buyproxy-rust" }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
