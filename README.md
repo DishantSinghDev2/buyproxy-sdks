@@ -6,15 +6,15 @@ Official client libraries for the [BuyProxy](https://www.buyproxy.org) proxy API
 
 | Language | Package | Install | Repo |
 |---|---|---|---|
-| **TypeScript / Node.js** | [`buyproxy`](https://www.npmjs.com/package/buyproxy) | `npm install buyproxy` | [buyproxy-node](https://github.com/DishantSinghDev2/buyproxy-node) |
-| **Python** | [`buyproxy`](https://pypi.org/project/buyproxy/) | `pip install buyproxy` | [buyproxy-python](https://github.com/DishantSinghDev2/buyproxy-python) |
+| **TypeScript / Node.js** | `buyproxy` | Coming soon (not on its registry yet) | [buyproxy-node](https://github.com/DishantSinghDev2/buyproxy-node) |
+| **Python** | `buyproxy` | Coming soon (not on its registry yet) | [buyproxy-python](https://github.com/DishantSinghDev2/buyproxy-python) |
 | **Go** | `github.com/DishantSinghDev2/buyproxy-go` | `go get github.com/DishantSinghDev2/buyproxy-go` | [buyproxy-go](https://github.com/DishantSinghDev2/buyproxy-go) |
-| **PHP** | [`buyproxy/buyproxy`](https://packagist.org/packages/buyproxy/buyproxy) | `composer require buyproxy/buyproxy` | [buyproxy-php](https://github.com/DishantSinghDev2/buyproxy-php) |
-| **Ruby** | [`buyproxy`](https://rubygems.org/gems/buyproxy) | `gem install buyproxy` | [buyproxy-ruby](https://github.com/DishantSinghDev2/buyproxy-ruby) |
-| **Java** | [`org.buyproxy:buyproxy`](https://central.sonatype.com/artifact/org.buyproxy/buyproxy) | Maven / Gradle | [buyproxy-java](https://github.com/DishantSinghDev2/buyproxy-java) |
-| **C# / .NET** | [`BuyProxy`](https://www.nuget.org/packages/BuyProxy) | `dotnet add package BuyProxy` | [buyproxy-dotnet](https://github.com/DishantSinghDev2/buyproxy-dotnet) |
-| **Rust** | [`buyproxy`](https://crates.io/crates/buyproxy) | `cargo add buyproxy` | [buyproxy-rust](https://github.com/DishantSinghDev2/buyproxy-rust) |
-| **CLI** | [`buyproxy-cli`](https://www.npmjs.com/package/buyproxy-cli) | `brew install DishantSinghDev2/tap/buyproxy` · `npm i -g buyproxy-cli` | [buyproxy-cli](https://github.com/DishantSinghDev2/buyproxy-cli) |
+| **PHP** | `buyproxy/buyproxy` | Coming soon (not on its registry yet) | [buyproxy-php](https://github.com/DishantSinghDev2/buyproxy-php) |
+| **Ruby** | `buyproxy` | Coming soon (not on its registry yet) | [buyproxy-ruby](https://github.com/DishantSinghDev2/buyproxy-ruby) |
+| **Java** | `org.buyproxy:buyproxy` | Coming soon (not on its registry yet) | [buyproxy-java](https://github.com/DishantSinghDev2/buyproxy-java) |
+| **C# / .NET** | `BuyProxy` | Coming soon (not on its registry yet) | [buyproxy-dotnet](https://github.com/DishantSinghDev2/buyproxy-dotnet) |
+| **Rust** | `buyproxy` | Coming soon (not on its registry yet) | [buyproxy-rust](https://github.com/DishantSinghDev2/buyproxy-rust) |
+| **CLI** | `buyproxy-cli` | Coming soon (not on its registry yet) | [buyproxy-cli](https://github.com/DishantSinghDev2/buyproxy-cli) |
 
 > Packages appear on their registries as each library is released — see [docs/RELEASING.md](docs/RELEASING.md).
 
