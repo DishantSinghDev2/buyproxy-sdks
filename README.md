@@ -2,6 +2,8 @@
 
 Official client libraries for the [BuyProxy](https://www.buyproxy.org) proxy API. Generate **residential, mobile, ISP and datacenter proxies**, check bandwidth, top up by card or crypto, and run a **proxy reseller** business — in your language, with full types.
 
+> **Payments changed on 9 November 2026.** BuyProxy now sells from one prepaid wallet. The per-product top-up calls in this README (card and crypto top-ups for a product, and reseller pool top-ups) are retired: the API refuses them with a message that names the call to use. Until this SDK adds wallet methods, add money with `POST /v1/wallet/topup` and buy with `POST /v1/wallet/purchase` (resellers buy pool bandwidth with `POST /v1/pool/purchase`); see the [API reference](https://www.buyproxy.org/docs/api-reference/introduction). Plan subscriptions by card still work. The [Go SDK](https://github.com/DishantSinghDev2/buyproxy-go) has the wallet methods from v1.1.0.
+
 | Language | Package | Install | Repo |
 |---|---|---|---|
 | **TypeScript / Node.js** | [`buyproxy`](https://www.npmjs.com/package/buyproxy) | `npm install buyproxy` | [buyproxy-node](https://github.com/DishantSinghDev2/buyproxy-node) |
@@ -18,8 +20,8 @@ Official client libraries for the [BuyProxy](https://www.buyproxy.org) proxy API
 
 ## What every SDK does
 
-- **Generate proxies** — rotating or sticky sessions, HTTP or SOCKS5, country / state / city / ISP targeting
-- **Account & billing** — balances per product, plans, card checkout (Stripe) and crypto top-ups, payment history with `wait`-until-settled
+- **Generate proxies** — rotating or sticky sessions, HTTP or SOCKS5, country targeting (state, city and ASN on Premium Residential)
+- **Account & billing** — balances per product, wallet deposits by card (Stripe) or crypto, plan subscriptions by card, payment history with `wait`-until-settled
 - **Reseller API** — buy bandwidth into a pool, create isolated customers, allocate GB (idempotent), suspend / reactivate, generate on their behalf
 - **Account creation without a browser** — signup + email-code verification
 - **Resilience built in** — typed errors, `Retry-After`-aware retries for rate limits, safe-by-default retry rules for writes
